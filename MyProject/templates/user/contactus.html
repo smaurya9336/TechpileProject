@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    .form-control{
+      margin-bottom:8px;
+      font-weight:bold;
+    }
+    .txta{
+    min-height:80px;
+    }
+    .btn{
+     font-weight:bold;
+    }
+    h5{
+    color:white;
+    }
+
+</style>
+<div class="row" style="background:#760705">
+    <div class="h2 text-center text-light">Contact<b class="text-danger"> Us<i class="fa fa-phone"></i></b></div>
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4 p-5">
+        <form method="post">
+            {% csrf_token %}<!--cross site reforgery-->
+            {% if S %}
+            <div class="alert alert-success">
+                Thanks for enquiry...
+            </div>
+            {% endif %}
+           <h5> Name</h5><input type="text" name="name" required class="form-control" placeholder="Enter Your Name">
+           <h5> Mobile</h5><input type="number" name="mobile" required class="form-control" placeholder="Enter Your Mobile No.">
+           <h5> Email</h5><input type="email" name="email" required class="form-control" placeholder="Enter Your Email">
+            <h5>Message</h5>
+            <textarea class="form-control" name="msg" style="..." placeholder="Enter Your Message.."></textarea>
+            <input type="submit" value="Save" class="btn btn-light"/>
+        </form>
+    </div>
+    <div class="col-sm-4"></div>
+</div>
+
+
+<!--
+<div class="row contact bg-primary">
+    <div class="h2 text-center">Contact<b class="text-info">Us<i class="fa fa-phone"></i></b></div>
+<div class="col-sm-4"></div>
+    <div class="col-sm-10 bg-primary" style="min-height:400px;">
+        <div class="row">
+            <div class="col-sm-5 p-4">
+                <form method="post">
+                    {% csrf_token %} <!-- cross site reforgery -->
+<!--  {% if S %}
+  <div class="alert alert-success">
+      Thanks for enquiry...
+  </div>
+  {% endif %}
+  Name<input type="text" name="name" required class="form-control" placeholder="Enter Your Name">
+  Mobile<input type="number" name="mobile" required class="form-control" placeholder="Enter Your Mobile No.">
+  Email<input type="email" name="email" required class="form-control" placeholder="Enter Your Email">
+  Message
+  <textarea class="form-control" name="msg" style="..." placeholder="Enter Your Message.."></textarea>
+  <input type="submit" value="Save" class="btn btn-info"/>
+</form>
+</div>
+
+<div class="col-sm-7"></div>
+</div>
+</div>
+
+<div class="col-sm-4"></div>
+</div>
+-->
+
+{% endblock %}

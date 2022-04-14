@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+<div class="row slider p-2">
+    <div class="col-sm-12">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{% static 'images/w1.jpg' %}" class="d-block w-100" alt="..."
+                         style="max-height:500px;">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/w2.jpg' %}" class="d-block w-100" alt="..."
+                         style="max-height:500px;">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/w4.jpg' %}" class="d-block w-100" alt="..."
+                         style="max-height:500px;">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+    </div>
+</div>
+<!--end slider-->
+<!--category-->
+<div class="row category bg-light">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10 py-3">
+        <div class="row">
+            {% if data %}
+            {% for x in data %}
+            <div class="col-sm-2"  >
+
+                <div class="card w-100">
+                    <img src="/{{x.cpic}}" class="card-img-top" alt="..." style="max-height:80px;">
+                    <div class="card-body">
+                        <a href="#" class="btn btn-dark w-100 rounded-pill">{{x.cname}}</a>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+            {% endif %}
+
+</div>
+</div>
+
+
+<div class="col-sm-1"></div>
+</div>
+<!--end category-->
+
+
+<!--new product-->
+<div class="new newproduct py-3" style="background:blue;">
+    <div class="h2 text-center text-light">Our<b style="color:black;"> new Products<i class="fa fa-product-hunt"></i></b></div>
+    <div class="col-sm-12">
+    <div class="row">
+         {% if product %}
+         {% for x in product %}
+     <div class="col-sm-2">
+                <div class="card w-80%">
+                    <img src="/{{x.ppic}}" class="card-img-top " alt="watch image"
+                         style="max-height:150px;"/>
+                    <div class="card-body py-2">
+                        <h5 class="card-title">{{x.category}}</h5>
+                        <div style="height:20px;width:20px;border-radius:3px;background:{{x.color}}"></div>
+                        <b>Rs.:</b><s class="btn btn-outline-danger" style="color:red;">{{x.tprice}}-</s>
+                        <b class="btn btn-outline-success">{{x.disprice}}-</b> || <b>{{x.name}}</b>
+
+
+                        <p class="card-text">this is the waterproof watch</p>
+
+
+                        <a href="/user/viewdetails?msg={{x.id}}" class="btn btn-danger rounded-pill">Buy Now</a>
+                        <a href="/user/process?pid={{x.id}}" target="_blank" class="btn btn-danger rounded"><i class="fa fa-shopping-cart"></i></a>
+
+                    </div>
+                </div>
+            </div>
+         {% endfor %}
+         {% endif %}
+
+        </div>
+    </div>
+</div>
+<!--end new product--->
+
+
+{% endblock %}

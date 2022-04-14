@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    .form-control{
+    margin-bottom:10px;
+    font-weight:bold;
+}
+h5{
+    color:black;
+    }
+    .btn{
+    font-weight:bold;
+    }
+</style>
+
+
+<div class="row">
+    <div class="h2 text-center text-dark">Sign <b class="text-danger">Up <i class="fa fa-users"></i></b></div>
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4 p-5 ">
+        <form method="post" autocomplete="off" enctype="multipart/form-data">
+                    {% csrf_token %}<!--cross site reforgery-->
+            <h5> Name*</h5><input type="text" name="name" required class="form-control" placeholder="Enter Your Name..">
+                   <h5> DOB*</h5><input type="date" name="dob" required class="form-control" placeholder="Enter Your DOB..">
+
+            <h5>Mobile No*</h5> <input type="number" name="mobile" required class="form-control" placeholder="Enter Your Mobile No.....">
+                   <h5>Email*</h5> <input type="email" name="email" required class="form-control" placeholder="Enter Your Email...">
+                    <h5>Password*</h5><input type="password" name="passwd" required class="form-control" placeholder="Enter Your Password...">
+                    <h5>Upload Photo*</h5><input type="file" name="fu" required class="form-control">
+                   <h5> Address*</h5>
+                    <textarea class="form-control" name="address" style="..." placeholder="Enter Your Address.."></textarea>
+                    <input type="submit" value="Sign Up" class="btn btn-warning " />
+                </form>
+    </div>
+    <div class="col-sm-4"></div>
+</div>
+
+{% endblock %}
